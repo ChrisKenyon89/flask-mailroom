@@ -6,8 +6,7 @@ from passlib.hash import pbkdf2_sha256
 from model import *
 
 app = Flask(__name__)
-app.secret_key = 'qwfh2123hf08hsd'
-#os.environ.get('SECRET_KEY').encode()
+app.secret_key = os.environ.get('SECRET_KEY').encode()
 
 @app.route('/')
 def home():
@@ -56,7 +55,7 @@ def delete():
         return render_template('delete.jinja2', donors=Donor.select())
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 6738))
     app.run(host='0.0.0.0', port = port)
 
 
