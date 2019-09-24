@@ -1,10 +1,15 @@
 <html>
 <head>
-<title>Mailroom</title>
+<title>Mailroom Donor DB</title>
 </head>
 <body>
-	<h1>Donations</h1>
-	<h2>{% block subtitle %} {% endblock subtitle %}</h2>
-	{% block content %} {% endblock content %}
+	<nav>
+		<a id="Home" href="{{ url_for('list_donors') }}">Home </a>
+		<a id="Add Donation" href="{{ url_for('create') }}">Add a donation </a>
+		<a id="Delete a donor" href="{{ url_for('delete') }}">Delete a donor </a>
+	<nav>
+    <h1>Mailroom Donor DB</h1>
+    <h2>{% block subtitle %} {% endblock subtitle %}</h2>
+    {% block content %} {% endblock content %}
 </body>
 </html>

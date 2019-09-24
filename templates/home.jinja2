@@ -1,0 +1,13 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}Donor List{% endblock subtitle %}
+
+{% block content %}
+<ul>
+    {% for donor	in donors %}
+    <li>
+        {{ donor.donor_name }} has made {{ donor.number_of_donations }} donations for a total of: ${{ donor.donation_total}}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}

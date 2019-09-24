@@ -1,20 +1,35 @@
 import os
 
-from peewee import Model, CharField, IntegerField, ForeignKeyField
+from peewee import *
 from playhouse.db_url import connect
 
-db = connect(os.environ.get('DATABASE_URL', 'sqlite:///my_database.db'))
+db = connect(os.environ.get('DATABASE_URL', 'sqlite:///donor_database.db'))
 
-class Donor(Model):
-    name = CharField(max_length=255, unique=True)
-
+class BaseModel(Model):
+    """
+    BaseModel class to inherit from
+    """
     class Meta:
         database = db
 
-class Donation(Model):
-    value = IntegerField()
-    donor = ForeignKeyField(Donor, backref='donations')
-
+class Donor(BaseModel):
+    """
+    Donor Class
+    """
+    donor_name = CharField(primary_key=True)
+    number_of_donations = IntegerField(null=True)
+    donation_total = FloatField(null=True)
+    
     class Meta:
-        database = db
+        database = db    
 
+class Donations(BaseModel):
+    """
+    Donations Class
+    """
+    donation_name = ForeignKeyField(Donor, related_name='is_donated_by')
+    donation_amount = FloatField()
+    
+    class Meta:
+        database = db    
+    
