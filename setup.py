@@ -3,7 +3,6 @@ Scripts to run to set up our database
 """
 from datetime import datetime
 from model import *
-from passlib.hash import pbkdf2_sha256
 
 # Create the database tables for our model
 db.connect()

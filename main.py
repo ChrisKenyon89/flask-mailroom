@@ -2,7 +2,6 @@ import os
 
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, session
-from passlib.hash import pbkdf2_sha256
 from model import *
 
 app = Flask(__name__)
